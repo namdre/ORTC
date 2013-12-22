@@ -1,0 +1,2 @@
+all sounds from pygame.org (LGPL)
+all images from commons.wikimedia.org (GNU Free Documentation License)
