@@ -11,6 +11,15 @@ from draw import draw_outlined_text
 from ai import AIThread
 #import autopdb
 
+def new_game(background, oldAI=None):
+    board = Board(background, (WHITE,))
+    allsprites = pygame.sprite.RenderPlain(board.grid.values())
+    if oldAI is not None:
+        oldAI.keep_running = False
+    ai = AIThread(board, BLACK, AI_DELAY)
+    ai.start()
+    return board, allsprites, ai
+
 def main():
 #Initialize Everything
 
@@ -31,10 +40,7 @@ def main():
 
 #Prepare Game Objects
     clock = pygame.time.Clock()
-    board = Board(background, (WHITE,))
-    allsprites = pygame.sprite.RenderPlain(board.grid.values())
-    ai = AIThread(board, BLACK, AI_DELAY)
-    ai.start()
+    board, allsprites, ai = new_game(background)
 
 #Main Loop
     while True:
@@ -46,6 +52,8 @@ def main():
                 return
             elif event.type == KEYDOWN and event.key == K_ESCAPE:
                 return
+            elif event.type == KEYDOWN and event.key == K_r and board.winner is not None:
+                board, allsprites, ai = new_game(background, ai)
             elif event.type == MOUSEBUTTONDOWN:
                 board.handle_click(pygame.mouse.get_pos())
 
@@ -59,6 +67,9 @@ def main():
             draw_outlined_text(screen, background.get_rect().center,
                     "Player %s wins" % COLORNAMES[board.winner], 64,
                     3, (0,0,0), (255,0,0))
+            draw_outlined_text(screen, Vec2d(0, 64) + background.get_rect().center,
+                    "Press 'R' to continue or 'Esc' to quit", 24,
+                    1, (255,255,255), (0,0,0))
 
         pygame.display.flip()
 
