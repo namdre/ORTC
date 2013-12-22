@@ -1,4 +1,4 @@
-#/usr/bin/env python
+#!/usr/bin/env python
 import os, sys
 import pygame
 from pygame.locals import *
