@@ -1,4 +1,9 @@
 #!/usr/bin/env python
+"""
+author: http://stackoverflow.com/users/6899/tzot
+license: implicit public domain
+(http://stackoverflow.com/questions/242485/starting-python-debugger-automatically-on-error)
+"""
 # -*- coding: utf-8 -*- 
 import sys
 

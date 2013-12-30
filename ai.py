@@ -1,3 +1,7 @@
+"""
+author: jakob.erdmann@gmail.com
+license: GPL 3.0 or newer
+"""
 from subprocess import Popen, PIPE, STDOUT
 import threading
 import time

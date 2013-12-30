@@ -1,3 +1,7 @@
+"""
+author: jakob.erdmann@gmail.com
+license: GPL 3.0 or newer
+"""
 # define chess movement rules
 from constants import *
 from vector2D import Vec2d

@@ -1,5 +1,8 @@
-################## http://www.pygame.org/wiki/2DVectorClass ##################
-# changes by Jakob.Erdmann@gmail.com
+"""
+original: http://www.pygame.org/wiki/2DVectorClass
+author: jakob.erdmann@gmail.com
+license: LGPL 3.0 or newer
+"""
 
 import operator
 import math

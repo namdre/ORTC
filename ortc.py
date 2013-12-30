@@ -1,4 +1,8 @@
 #!/usr/bin/env python
+"""
+author: jakob.erdmann@gmail.com
+license: GPL 3.0 or newer
+"""
 import os, sys
 import pygame
 from pygame.locals import *
