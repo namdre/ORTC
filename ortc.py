@@ -31,7 +31,7 @@ def main():
 
     screen = pygame.display.set_mode(GRIDDIM * FIELDSIZE + Vec2d(2,2)
             )#, pygame.FULLSCREEN)
-    pygame.display.set_caption('Real Time Chess')
+    pygame.display.set_caption('Open Real Time Chess')
     #pygame.mouse.set_visible(0)
 
 #Create The Backgound
