@@ -84,8 +84,12 @@ go wtime %s winc 0 btime %s binc 0
 
     def try_move(self, board):
         # stockfish does not return king-killing moves
-        if board.attack_king(self.color):
-            return
+        try:
+            if board.attack_king(self.color):
+                return
+        except InvalidMove as e:
+            frompos, topos, promotion = move
+            print("cannot execute king attack from %s to %s" % (frompos, topos))
         move = self.compute_move(board)
         if move is not None:
             try:

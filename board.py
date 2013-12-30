@@ -146,7 +146,7 @@ class Board:
             if victim.color == piece.color:
                 raise InvalidMove("occupied by own color")
             else:
-                piece.attack(topos, self)
+                piece.attack(topos)
         else:
             if piece.delay == 0:
                 self.relocate(frompos, topos)

@@ -49,22 +49,24 @@ class Piece(pygame.sprite.Sprite):
         pygame.draw.rect(self.surf, (255,255,0), pygame.Rect(
             topleft + Vec2d(5, 17), 
             ((FIELDSIZE.x - 10) * self.delay / DELAY, 10)))
-        self.attack(self.attackpos, board)
+        self.continue_attack(board)
 
-    def attack(self, attackpos, board):
-        if attackpos is not None:
-            if (board.in_between(self.gridpos, attackpos, self) or
-                    board.grid.get(attackpos) is None or
-                    board.grid[attackpos].color == self.color):
+    def continue_attack(self, board):
+        if self.attackpos is not None:
+            if (board.in_between(self.gridpos, self.attackpos, self) or
+                    board.grid.get(self.attackpos) is None or
+                    board.grid[self.attackpos].color == self.color):
                 self.attackpos = None
             else:
-                self.attackpos = attackpos
-                victim = board.grid[attackpos]
+                victim = board.grid[self.attackpos]
                 self.draw_attack(victim)
                 victim.hitpoints -= (REGEN + ATTACK)
                 if victim.hitpoints <= 0:
                     self.victim = None
                     board.killed(self, victim)
+
+    def attack(self, attackpos):
+        self.attackpos = attackpos
 
     def as_fen(self):
         code = FENCODE[self.piece]
